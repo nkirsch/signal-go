@@ -85,8 +85,12 @@ func list(c *signal.Client, args []string) {
 	status := fs.String("status", "", "status")
 	n := fs.Int("n", 20, "count")
 	asJSON := fs.Bool("json", false, "raw JSON")
+	cleared := fs.Bool("cleared", false, "include cleared events")
 	fs.Parse(args)
 	q := url.Values{"limit": {fmt.Sprint(*n)}}
+	if *cleared {
+		q.Set("dismissed", "1")
+	}
 	for k, v := range map[string]string{"source": *src, "event": *ev, "status": *status} {
 		if v != "" {
 			q.Set(k, v)

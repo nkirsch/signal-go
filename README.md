@@ -19,7 +19,7 @@ CLI: `go install github.com/nkirsch/signal-go/cmd/signal@latest`
 
 ```
 signal -t Title -a home -p 1 message      # or: echo message | signal -t Title
-signal list [-s source] [-e event] [-status failed] [-n 20]
+signal list [-s source] [-e event] [-status failed] [-n 20] [-cleared]
 ```
 
 The CLI reads `SIGNAL_TOKEN` or `~/.config/signal/token`.
